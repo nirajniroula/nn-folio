@@ -1,0 +1,28 @@
+{
+  "id": "tool_icons_section",
+  "type": "SharedSlice",
+  "name": "ToolIconsSection",
+  "description": "ToolIconsSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": { "label": "Title", "placeholder": "" }
+        }
+      },
+      "items": {
+        "logo": {
+          "type": "Image",
+          "config": { "label": "Logo", "constraint": {}, "thumbnails": [] }
+        }
+      }
+    }
+  ]
+}

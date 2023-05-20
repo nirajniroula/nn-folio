@@ -29,7 +29,7 @@ const Hero = ({ slice }) => {
       )}
       <Bounded yPadding="lg" className="relative">
         <div className="grid justify-items-center gap-8">
-          <div className="max-w-2xl text-center">
+          <div className="max-w-3xl text-center">
             <PrismicRichText
               field={slice.primary.text}
               components={components}

@@ -25,7 +25,7 @@ const ImageCard = ({ item }) => {
           </ConditionalWrap>
         </div>
       )}
-      <div className="leading-relaxed">
+      <div className="font-light leading-relaxed">
         <PrismicRichText field={item.text} />
       </div>
       {prismicH.isFilled.link(item.buttonLink) && (
@@ -48,6 +48,12 @@ const ImageCards = ({ slice }) => {
             <PrismicText field={slice.primary.heading} />
           </Heading>
         )}
+        {prismicH.isFilled.richText(slice.primary.description) && (
+          <div className="font-medium leading-relaxed">
+            <PrismicRichText field={slice.primary.description} />
+          </div>
+        )}
+
         <ul className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
           {slice.items.map((item) => (
             <ImageCard key={item.image.url} item={item} />
