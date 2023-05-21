@@ -12,9 +12,9 @@ const ToolIconsSection = ({ slice }) => {
     <Bounded as="section" className="bg-white">
       <div className="flex flex-col items-center justify-center gap-8">
         <h4 className="mb-4 text-3xl font-medium">{slice.primary.title}</h4>
-        <div className="grid grid-cols-3 place-content-center gap-8 md:grid-cols-8">
+        <div className="grid grid-cols-3 place-content-center gap-16 md:grid-cols-7">
           {slice.items.map((item) => (
-            <div key={item.logo.url} className="h-24 w-24">
+            <div key={item.logo.url} className="h-20 w-20">
               <PrismicNextImage
                 field={item.logo}
                 sizes="100vw"
