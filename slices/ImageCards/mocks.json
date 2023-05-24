@@ -87,6 +87,36 @@
 							"value": "wild",
 							"type": "Text"
 						}
+					],
+					[
+						"platform",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "Web",
+							"type": "Select"
+						}
+					],
+					[
+						"tags",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Nisi ut Lorem nulla sit aliquip pariatur velit mollit veniam ea nulla eiusmod ad quis. In officia nostrud magna dolor tempor irure consequat laborum aute commodo est. Deserunt id do duis esse et proident."
+									}
+								}
+							]
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "burn",
+							"type": "Text"
+						}
 					]
 				]
 			}

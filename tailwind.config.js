@@ -6,5 +6,22 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#68a2c9",
+          secondary: "#4c545b",
+          accent: "#d3b937",
+          neutral: "#252028",
+          "base-100": "#F9F9FB",
+          info: "#2CA7D8",
+          success: "#80E0A8",
+          warning: "#F29318",
+          error: "#EE497B",
+        },
+      },
+    ],
+  },
+  plugins: [require("@tailwindcss/aspect-ratio"), require("daisyui")],
 };

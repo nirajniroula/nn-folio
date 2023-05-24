@@ -59,6 +59,28 @@
         "buttonText": {
           "type": "Text",
           "config": { "label": "Button Text", "placeholder": "" }
+        },
+        "platform": {
+          "type": "Select",
+          "config": {
+            "label": "Platform",
+            "placeholder": "",
+            "options": ["Web", "Android", "iOS ", "Mobile(Android/iOS)"],
+            "default_value": "Web"
+          }
+        },
+        "tags": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Tags",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "list-item"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": { "label": "Title", "placeholder": "" }
         }
       },
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
