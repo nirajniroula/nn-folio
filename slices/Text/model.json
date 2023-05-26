@@ -19,6 +19,10 @@
             "allowTargetBlank": true,
             "multi": "paragraph,heading1,heading2,heading3,strong,em,hyperlink,list-item,o-list-item"
           }
+        },
+        "css_classes": {
+          "type": "Text",
+          "config": { "label": "CSS classes", "placeholder": "" }
         }
       },
       "items": {},

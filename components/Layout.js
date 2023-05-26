@@ -16,7 +16,7 @@ export const Layout = ({ navigation, settings, children }) => {
           <MenuButton />
         </div>
         {/* <!-- Page content here --> */}
-        <main>{children}</main>
+        <main className="flex flex-col grow justify-center">{children}</main>
         <Footer />
       </div>
       <DrawerMenu navigation={navigation} />

@@ -96,6 +96,28 @@ interface PageDocumentData {
    *
    */
   slices: prismic.SliceZone<PageDocumentDataSlicesSlice>;
+  /**
+   * Meta Title field in *Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.meta_title
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_title: prismic.RichTextField;
+  /**
+   * Meta Description field in *Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.meta_description
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
 }
 /**
  * Slice for *Page → Slice Zone*
@@ -108,7 +130,8 @@ type PageDocumentDataSlicesSlice =
   | ImageSlice
   | ImageCardsSlice
   | TextWithImageSlice
-  | ToolIconsSectionSlice;
+  | ToolIconsSectionSlice
+  | ContactFormSlice;
 /**
  * Page document from Prismic
  *
@@ -120,6 +143,23 @@ type PageDocumentDataSlicesSlice =
  */
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+/** Content for Project Details documents */
+type ProjectDetailsDocumentData = Record<string, never>;
+/**
+ * Project Details document from Prismic
+ *
+ * - **API ID**: `project_details`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectDetailsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProjectDetailsDocumentData>,
+    "project_details",
+    Lang
+  >;
 /** Content for Settings documents */
 interface SettingsDocumentData {
   /**
@@ -133,6 +173,17 @@ interface SettingsDocumentData {
    *
    */
   siteTitle: prismic.TitleField;
+  /**
+   * Site Name field in *Settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.site_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  site_name: prismic.RichTextField;
 }
 /**
  * Settings document from Prismic
@@ -152,7 +203,38 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | NavigationDocument
   | PageDocument
+  | ProjectDetailsDocument
   | SettingsDocument;
+/**
+ * Default variation for ContactForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+/**
+ * Slice variation for *ContactForm*
+ *
+ */
+type ContactFormSliceVariation = ContactFormSliceDefault;
+/**
+ * ContactForm Shared Slice
+ *
+ * - **API ID**: `contact_form`
+ * - **Description**: `ContactForm`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactFormSlice = prismic.SharedSlice<
+  "contact_form",
+  ContactFormSliceVariation
+>;
 /**
  * Primary content in Hero → Primary
  *
@@ -502,6 +584,16 @@ interface TextSliceDefaultPrimary {
    *
    */
   text: prismic.RichTextField;
+  /**
+   * CSS classes field in *Text → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text.primary.css_classes
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  css_classes: prismic.KeyTextField;
 }
 /**
  * Default variation for Text Slice
@@ -753,9 +845,14 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       PageDocument,
+      ProjectDetailsDocumentData,
+      ProjectDetailsDocument,
       SettingsDocumentData,
       SettingsDocument,
       AllDocumentTypes,
+      ContactFormSliceDefault,
+      ContactFormSliceVariation,
+      ContactFormSlice,
       HeroSliceDefaultPrimary,
       HeroSliceDefault,
       HeroSliceVariation,
