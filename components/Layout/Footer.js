@@ -2,11 +2,11 @@ import React from "react";
 import { SiWakatime, SiStackoverflow, SiGithub } from "react-icons/si";
 function Footer({}) {
   return (
-    <footer className="footer items-center bg-secondary p-4 px-4 text-secondary-content md:px-8 opacity-70">
-      <div className="grid-flow-col items-center">
+    <footer className="footer items-center bg-secondary p-4 px-4 text-secondary-content opacity-70  md:px-8">
+      <div className="order-2 grid-flow-col items-center justify-self-center md:order-1 md:justify-self-start">
         <p>Copyright © 2023</p>
       </div>
-      <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+      <div className="order-1 grid-flow-col gap-8 justify-self-center md:order-2 md:place-self-center md:justify-self-end">
         <a
           href="https://stackoverflow.com/users/4387975/niraj-niroula"
           target="_blank"

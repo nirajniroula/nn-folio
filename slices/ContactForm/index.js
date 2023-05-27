@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Bounded } from "../../components/Bounded";
 import emailjs from "@emailjs/browser";
+import clsx from "clsx";
 
 const Field = ({ label, children }) => {
   return (
@@ -38,40 +39,56 @@ const TextareaField = ({ label, name, placeholder, required = true }) => {
         name={name}
         required={required}
         placeholder={placeholder}
-        className="h-40 w-full rounded-none border-b border-slate-200 py-3 pl-3 pr-7 text-slate-800 placeholder-slate-400"
+        className="h-40 w-full rounded border-b border-slate-200 py-3 pl-3 pr-7 text-slate-800 placeholder-slate-400"
       />
     </Field>
   );
 };
-const TEMPLATE_ID = "template_yb3uo1y";
-const SERVICE_ID = "service_kurqgrd";
-const PUBLIC_KEY = "gB0rOJ0pIByrlvWB6";
+const TEMPLATE_ID = process.env.TEMPLATE_ID;
+const SERVICE_ID = process.env.SERVICE_ID;
+const PUBLIC_KEY = process.env.PUBLIC_KEY;
 
 const ContactForm = () => {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
-
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
-      (result) => {
-        console.log(result.text);
-        setShowSuccessAlert(true);
-        setTimeout(function () {
-          setShowSuccessAlert(false);
-        }, 3000);
-      },
-      (error) => {
-        console.log(error.text);
-        setShowErrorAlert(true);
-        setTimeout(function () {
-          setShowErrorAlert(false);
-        }, 3000);
-      }
-    );
+    if (!isSending) {
+      setIsSending(true);
+      emailjs
+        .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+        .then(
+          (result) => {
+            console.log(result.text);
+            form?.current?.reset();
+            setShowSuccessAlert(true);
+            setTimeout(function () {
+              setShowSuccessAlert(false);
+            }, 4000);
+          },
+          (error) => {
+            console.log(error.text);
+            setShowErrorAlert(true);
+            setTimeout(function () {
+              setShowErrorAlert(false);
+            }, 4000);
+          }
+        )
+        .catch((error) => {
+          console.log(error);
+          setShowErrorAlert(true);
+          setTimeout(function () {
+            setShowErrorAlert(false);
+          }, 4000);
+        })
+        .finally(() => {
+          setIsSending(false);
+        });
+    }
   };
 
   return (
@@ -91,11 +108,20 @@ const ContactForm = () => {
         />
         <button
           type="submit"
-          className="ml-auto inline-flex items-center gap-2"
+          className={clsx(
+            "ml-auto inline-flex items-center gap-2",
+            isSending ? "animate-pulse" : "animate-none"
+          )}
         >
           Send message
-          <span aria-hidden={true} className="text-xl">
-            &rarr;
+          <span
+            aria-hidden={true}
+            className={clsx(
+              "text-xl",
+              isSending ? "animate-spin" : "animate-none"
+            )}
+          >
+            &#9655;
           </span>
         </button>
       </form>

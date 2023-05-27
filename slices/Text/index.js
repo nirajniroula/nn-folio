@@ -3,11 +3,12 @@ import clsx from "clsx";
 import { Bounded } from "../../components/Bounded";
 
 const Text = ({ slice }) => {
-  const containerStyle = slice.primary.css_classes;
   return (
     <Bounded
       as="section"
-      className={clsx("bg-base-0 leading-relaxed ", containerStyle)}
+      className={clsx(
+        `bg-base-0 leading-relaxed, ${slice.primary.css_classes}`
+      )}
     >
       <div
         className={clsx(
