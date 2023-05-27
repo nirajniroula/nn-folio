@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'jit',
-  content: ["./pages/**/*.js", "./components/**/*.js", "./slices/**/*.js"],
+  content: ["./pages/**/*.js", "./components/**/*.js", "./slices/**/*.js", "./utils/**/*.js"],
   safelist: [
     {
       pattern: /py-./,
