@@ -1,9 +1,14 @@
 module.exports = {
-  mode: 'jit',
-  content: ["./pages/**/*.js", "./components/**/*.js", "./slices/**/*.js", "./utils/**/*.js"],
+  mode: "jit",
+  content: [
+    "./pages/**/*.js",
+    "./components/**/*.js",
+    "./slices/**/*.js",
+    "./utils/**/*.js",
+  ],
   safelist: [
     {
-      pattern: /py-./,
+      pattern: /pb-./,
       variants: ["sm", "md", "lg", "xl", "2xl"],
     },
   ],
