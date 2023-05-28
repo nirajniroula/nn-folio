@@ -44,9 +44,9 @@ const TextareaField = ({ label, name, placeholder, required = true }) => {
     </Field>
   );
 };
-const TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID;
-const SERVICE_ID = process.env.EMAILJS_SERVICE_ID;
-const PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 const ContactForm = () => {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
@@ -68,14 +68,14 @@ const ContactForm = () => {
             setShowSuccessAlert(true);
             setTimeout(function () {
               setShowSuccessAlert(false);
-            }, 4000);
+            }, 5000);
           },
           (error) => {
             console.log(error.text);
             setShowErrorAlert(true);
             setTimeout(function () {
               setShowErrorAlert(false);
-            }, 4000);
+            }, 5000);
           }
         )
         .catch((error) => {
@@ -83,7 +83,7 @@ const ContactForm = () => {
           setShowErrorAlert(true);
           setTimeout(function () {
             setShowErrorAlert(false);
-          }, 4000);
+          }, 5000);
         })
         .finally(() => {
           setIsSending(false);
