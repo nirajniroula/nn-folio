@@ -6,7 +6,7 @@ const Text = ({ slice }) => {
   return (
     <Bounded
       as="section"
-      className={clsx("bg-base-0 leading-relaxed", slice.primary.css_classes)}
+      className={clsx("base-0 leading-relaxed", slice.primary.css_classes)}
     >
       <div
         className={clsx(

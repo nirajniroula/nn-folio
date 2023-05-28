@@ -8,7 +8,7 @@ const TextWithImage = ({ slice }) => {
   const image = slice.primary.image;
 
   return (
-    <Bounded as="section" className="bg-white">
+    <Bounded as="section">
       <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
         <div>
           <PrismicRichText field={slice.primary.text} />

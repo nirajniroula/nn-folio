@@ -26,7 +26,7 @@ const InputField = ({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded border-b border-slate-200 py-3 pl-3 pr-7 text-slate-800 placeholder-slate-400"
+        className="w-full rounded  py-3 pl-3 pr-7 placeholder-slate-400"
       />
     </Field>
   );
@@ -39,7 +39,7 @@ const TextareaField = ({ label, name, placeholder, required = true }) => {
         name={name}
         required={required}
         placeholder={placeholder}
-        className="h-40 w-full rounded border-b border-slate-200 py-3 pl-3 pr-7 text-slate-800 placeholder-slate-400"
+        className="h-40 w-full rounded py-3 pl-3 pr-7 placeholder-slate-400"
       />
     </Field>
   );
@@ -92,8 +92,8 @@ const ContactForm = () => {
   };
 
   return (
-    <Bounded as="section" size="small" yPadding="sm">
-      <form ref={form} onSubmit={sendEmail} className="grid grid-cols-1 gap-6">
+    <Bounded as="section" size="small" yPadding="sm" >
+      <form ref={form} onSubmit={sendEmail} className="grid grid-cols-1 gap-6 pb-8">
         <InputField label="Name" name="user_name" placeholder="John Doe" />
         <InputField
           label="Email Address"

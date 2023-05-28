@@ -6,7 +6,7 @@ import { Bounded } from "../../components/Bounded";
 
 const Quote = ({ slice }) => {
   return (
-    <Bounded as="section" className="bg-white">
+    <Bounded as="section">
       {prismicH.isFilled.richText(slice.primary.quote) && (
         <figure className="grid gap-6">
           <blockquote>

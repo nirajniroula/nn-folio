@@ -9,6 +9,7 @@ import {
   DEFAULT_SEO_DESCRIPTION,
   DEFAULT_SEO_TITLE,
 } from "../components/constants";
+import { ThemeProvider } from "../contexts/ThemeContext";
 
 const richTextComponents = {
   heading1: ({ children }) => (
@@ -68,7 +69,9 @@ export default function App({ Component, pageProps }) {
           title={DEFAULT_SEO_TITLE}
           description={DEFAULT_SEO_DESCRIPTION}
         />
-        <Component {...pageProps} />
+        <ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </PrismicPreview>
     </PrismicProvider>
   );

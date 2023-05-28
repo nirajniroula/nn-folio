@@ -9,7 +9,7 @@ const ImageCard = ({ item }) => {
   const image = item.image;
   return (
     <li className="grid gap-8">
-      <div className="card w-full overflow-hidden bg-white shadow-xl">
+      <div className="border-base-100 card w-full overflow-hidden border shadow-xl">
         {prismicH.isFilled.image(image) && (
           <ConditionalWrap
             condition={prismicH.isFilled.link(item.buttonLink)}
@@ -46,7 +46,7 @@ const ImageCard = ({ item }) => {
 
 const ImageCards = ({ slice }) => {
   return (
-    <Bounded as="section" className="bg-white">
+    <Bounded as="section">
       <div className="grid gap-12">
         {prismicH.isFilled.richText(slice.primary.heading) && (
           <Heading className="text-center">

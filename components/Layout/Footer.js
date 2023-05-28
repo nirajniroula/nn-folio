@@ -2,7 +2,7 @@ import React from "react";
 import { SiWakatime, SiStackoverflow, SiGithub } from "react-icons/si";
 function Footer({}) {
   return (
-    <footer className="footer items-center bg-secondary p-4 px-4 text-secondary-content opacity-70  md:px-8">
+    <footer className="footer items-center p-4 px-4 bg-base-200 md:px-8">
       <div className="order-2 grid-flow-col items-center justify-self-center md:order-1 md:justify-self-start">
         <p>Copyright © 2023</p>
       </div>

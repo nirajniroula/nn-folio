@@ -21,7 +21,7 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        mytheme: {
+        light: {
           primary: "#68a2c9",
           secondary: "#4c545b",
           accent: "#d3b937",
@@ -32,6 +32,13 @@ module.exports = {
           warning: "#F29318",
           error: "#EE497B",
         },
+
+        dark: {
+          ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
+          secondary: "#75a99c",
+          primary: "#68a2c9",
+        },
+
       },
     ],
   },

@@ -10,7 +10,7 @@ import { getRandomAnim } from "../../utils/string";
  */
 const ToolIconsSection = ({ slice }) => {
   return (
-    <Bounded as="section" className="bg-white">
+    <Bounded as="section">
       <div className="flex flex-col items-center justify-center gap-8">
         <h4 className="mb-4 text-3xl font-medium">{slice.primary.title}</h4>
         <div className="grid grid-cols-3 place-content-center gap-16 md:grid-cols-7">
