@@ -7,7 +7,6 @@ import { ConditionalWrap } from "../../components/ConditionalWrap";
 
 const ImageCard = ({ item }) => {
   const image = item.image;
-  console.log("...", item);
   return (
     <li className="grid gap-8">
       <div className="card w-full overflow-hidden bg-white shadow-xl">
