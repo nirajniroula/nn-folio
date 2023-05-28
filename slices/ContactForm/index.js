@@ -44,9 +44,9 @@ const TextareaField = ({ label, name, placeholder, required = true }) => {
     </Field>
   );
 };
-const TEMPLATE_ID = process.env.TEMPLATE_ID;
-const SERVICE_ID = process.env.SERVICE_ID;
-const PUBLIC_KEY = process.env.PUBLIC_KEY;
+const TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID;
+const SERVICE_ID = process.env.EMAILJS_SERVICE_ID;
+const PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY;
 
 const ContactForm = () => {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
