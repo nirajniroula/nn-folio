@@ -6,6 +6,8 @@ import { repositoryName } from "../prismicio";
 import { Heading } from "../components/Heading";
 
 import "../styles/globals.css";
+import { DefaultSeo } from "next-seo";
+import { DEFAULT_SEO_DESCRIPTION, DEFAULT_SEO_TITLE } from "./constants";
 
 const richTextComponents = {
   heading1: ({ children }) => (
@@ -61,6 +63,10 @@ export default function App({ Component, pageProps }) {
       richTextComponents={richTextComponents}
     >
       <PrismicPreview repositoryName={repositoryName}>
+        <DefaultSeo
+          title={DEFAULT_SEO_TITLE}
+          description={DEFAULT_SEO_DESCRIPTION}
+        />
         <Component {...pageProps} />
       </PrismicPreview>
     </PrismicProvider>
