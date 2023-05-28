@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { PrismicLink, PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
-
 import { repositoryName } from "../prismicio";
 import { Heading } from "../components/Heading";
-
 import "../styles/globals.css";
 import { DefaultSeo } from "next-seo";
-import { DEFAULT_SEO_DESCRIPTION, DEFAULT_SEO_TITLE } from "./constants";
+import {
+  DEFAULT_SEO_DESCRIPTION,
+  DEFAULT_SEO_TITLE,
+} from "../components/constants";
 
 const richTextComponents = {
   heading1: ({ children }) => (
