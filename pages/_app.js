@@ -5,11 +5,15 @@ import { repositoryName } from "../prismicio";
 import { Heading } from "../components/Heading";
 import "../styles/globals.css";
 import { DefaultSeo } from "next-seo";
+
+import { ThemeProvider } from "../contexts/ThemeContext";
+import Head from "next/head";
+import { useRouter } from "next/router";
 import {
+  BASE_URL,
   DEFAULT_SEO_DESCRIPTION,
   DEFAULT_SEO_TITLE,
-} from "../components/constants";
-import { ThemeProvider } from "../contexts/ThemeContext";
+} from "../config/constants";
 
 const richTextComponents = {
   heading1: ({ children }) => (
@@ -59,20 +63,32 @@ const richTextComponents = {
 };
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  const canonicalURL = (
+    BASE_URL + (router.asPath === "/" ? "" : router.asPath)
+  ).split("?")[0];
   return (
-    <PrismicProvider
-      internalLinkComponent={Link}
-      richTextComponents={richTextComponents}
-    >
-      <PrismicPreview repositoryName={repositoryName}>
-        <DefaultSeo
-          title={DEFAULT_SEO_TITLE}
-          description={DEFAULT_SEO_DESCRIPTION}
-        />
-        <ThemeProvider>
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </PrismicPreview>
-    </PrismicProvider>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href={canonicalURL} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <PrismicProvider
+        internalLinkComponent={Link}
+        richTextComponents={richTextComponents}
+      >
+        <PrismicPreview repositoryName={repositoryName}>
+          <DefaultSeo
+            title={DEFAULT_SEO_TITLE}
+            description={DEFAULT_SEO_DESCRIPTION}
+          />
+          <ThemeProvider>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </PrismicPreview>
+      </PrismicProvider>
+    </>
   );
 }
