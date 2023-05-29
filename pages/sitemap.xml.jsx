@@ -15,12 +15,13 @@ const Sitemap = ({ pages }) => {
 
         // special rule for the Homepage
         if (
-          (linkResolver(page) === "/" && page.type === "settings") ||
-          page.type === "navigation"
+          linkResolver(page) === "/" &&
+          page.type === "page" &&
+          page.uid === "home"
         ) {
           return (
             <url key={index}>
-              <loc>{origin}</loc>
+              <loc>{origin}/</loc>
               <lastmod>{lastModified}</lastmod>
             </url>
           );
