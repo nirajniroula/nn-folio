@@ -12,36 +12,33 @@ const Sitemap = ({ pages }) => {
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       {pages?.map((page, index) => {
         const lastModified = new Date(page.last_publication_date).toISOString();
-        console.log("..........", linkResolver(page));
 
         // special rule for the Homepage
-          if (
-            linkResolver(page) === "/" &&
-            page.type === "settings" ||
-            page.type === "navigation"
-          ) {
-            return (
-              <url key={index}>
-                <loc>{origin}</loc>
-                <lastmod>{lastModified}</lastmod>
-              </url>
-            );
-          }
+        if (
+          (linkResolver(page) === "/" && page.type === "settings") ||
+          page.type === "navigation"
+        ) {
+          return (
+            <url key={index}>
+              <loc>{origin}</loc>
+              <lastmod>{lastModified}</lastmod>
+            </url>
+          );
+        }
 
-          if (
-            (linkResolver(page) !== "/" || page.url) &&
-            !(page.data.seoIndex === false)
-          ) {
-            const url = origin + (linkResolver(page) || page.url);
+        if (
+          (linkResolver(page) !== "/" || page.url) &&
+          !(page.data.seoIndex === false)
+        ) {
+          const url = origin + (linkResolver(page) || page.url);
 
-            return (
-              <url key={index}>
-                <loc>{url}</loc>
-                <lastmod>{lastModified}</lastmod>
-              </url>
-            );
-          }
-        
+          return (
+            <url key={index}>
+              <loc>{url}</loc>
+              <lastmod>{lastModified}</lastmod>
+            </url>
+          );
+        }
       })}
     </urlset>
   );
