@@ -1,0 +1,21 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"button_url": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "think",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

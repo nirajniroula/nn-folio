@@ -1,5 +1,5 @@
 import React from "react";
-import { SiWakatime, SiStackoverflow, SiGithub } from "react-icons/si";
+import { SiMedium, SiStackoverflow, SiGithub } from "react-icons/si";
 function Footer({}) {
   return (
     <footer className="footer items-center p-4 px-4 bg-base-200 md:px-8">
@@ -16,8 +16,8 @@ function Footer({}) {
         <a href="https://github.com/nirajniroula" target="_blank">
           <SiGithub size={18} />
         </a>
-        <a href="https://wakatime.com/@niniroula" target="_blank">
-          <SiWakatime size={18} />
+        <a href="https://medium.com/@niniroula" target="_blank">
+          <SiMedium size={18} />
         </a>
       </div>
     </footer>

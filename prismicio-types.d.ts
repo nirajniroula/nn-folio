@@ -131,7 +131,8 @@ type PageDocumentDataSlicesSlice =
   | ImageCardsSlice
   | TextWithImageSlice
   | ToolIconsSectionSlice
-  | ContactFormSlice;
+  | ContactFormSlice
+  | ButtonSlice;
 /**
  * Page document from Prismic
  *
@@ -205,6 +206,59 @@ export type AllDocumentTypes =
   | PageDocument
   | ProjectDetailsDocument
   | SettingsDocument;
+/**
+ * Primary content in Button → Primary
+ *
+ */
+interface ButtonSliceDefaultPrimary {
+  /**
+   * Button Url field in *Button → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button.primary.button_url
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  button_url: prismic.LinkField;
+  /**
+   * Button Text field in *Button → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  button_text: prismic.KeyTextField;
+}
+/**
+ * Default variation for Button Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ButtonSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ButtonSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *Button*
+ *
+ */
+type ButtonSliceVariation = ButtonSliceDefault;
+/**
+ * Button Shared Slice
+ *
+ * - **API ID**: `button`
+ * - **Description**: `Button`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ButtonSlice = prismic.SharedSlice<"button", ButtonSliceVariation>;
 /**
  * Default variation for ContactForm Slice
  *
@@ -850,6 +904,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocument,
       AllDocumentTypes,
+      ButtonSliceDefaultPrimary,
+      ButtonSliceDefault,
+      ButtonSliceVariation,
+      ButtonSlice,
       ContactFormSliceDefault,
       ContactFormSliceVariation,
       ContactFormSlice,
