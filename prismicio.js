@@ -24,6 +24,10 @@ const routes = [
     path: "/",
   },
   {
+    type: "project_details",
+    path: "/project/:uid",
+  },
+  {
     type: "settings",
     path: "/",
   },

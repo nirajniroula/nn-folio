@@ -145,7 +145,46 @@ type PageDocumentDataSlicesSlice =
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 /** Content for Project Details documents */
-type ProjectDetailsDocumentData = Record<string, never>;
+interface ProjectDetailsDocumentData {
+  /**
+   * Title field in *Project Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_details.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * About field in *Project Details*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_details.about
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  about: prismic.RichTextField;
+  /**
+   * Slice Zone field in *Project Details*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_details.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<ProjectDetailsDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Project Details → Slice Zone*
+ *
+ */
+type ProjectDetailsDocumentDataSlicesSlice = TextSlice | TextWithImageSlice;
 /**
  * Project Details document from Prismic
  *
@@ -516,7 +555,7 @@ export interface ImageCardsSliceDefaultItem {
    *
    */
   platform: prismic.SelectField<
-    "Web" | "Android" | "iOS " | "Mobile(Android/iOS)",
+    "Web" | "Android" | "iOS " | "Mobile(Android/iOS)" | "Web & Mobile",
     "filled"
   >;
   /**
@@ -711,16 +750,6 @@ export type TextSlice = prismic.SharedSlice<"text", TextSliceVariation>;
  */
 interface TextWithImageSliceDefaultPrimary {
   /**
-   * Text field in *TextWithImage → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: text_with_image.primary.text
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  text: prismic.RichTextField;
-  /**
    * Image field in *TextWithImage → Primary*
    *
    * - **Field Type**: Image
@@ -730,6 +759,16 @@ interface TextWithImageSliceDefaultPrimary {
    *
    */
   image: prismic.ImageField<never>;
+  /**
+   * Text field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismic.RichTextField;
 }
 /**
  * Default variation for TextWithImage Slice
@@ -804,12 +843,116 @@ export type TextWithImageSliceWithButton = prismic.SharedSliceVariation<
   never
 >;
 /**
+ * Primary content in TextWithImage → Primary
+ *
+ */
+interface TextWithImageSliceWithTagsPrimary {
+  /**
+   * Title field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * About field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.about
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  about: prismic.RichTextField;
+  /**
+   * Image field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismic.ImageField<never>;
+  /**
+   * Platform field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Web
+   * - **API ID Path**: text_with_image.primary.platform
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  platform: prismic.SelectField<
+    "Web" | "Android" | "iOS" | "Mobile(Android & iOS)" | "Web & Mobile",
+    "filled"
+  >;
+  /**
+   * Tags field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.tags
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  tags: prismic.RichTextField;
+  /**
+   * Text field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismic.RichTextField;
+  /**
+   * Button Text field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  button_text: prismic.KeyTextField;
+  /**
+   * Button Link field in *TextWithImage → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_image.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  button_link: prismic.LinkField;
+}
+/**
+ * With Tags variation for TextWithImage Slice
+ *
+ * - **API ID**: `withTags`
+ * - **Description**: `TextWithImage`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextWithImageSliceWithTags = prismic.SharedSliceVariation<
+  "withTags",
+  Simplify<TextWithImageSliceWithTagsPrimary>,
+  never
+>;
+/**
  * Slice variation for *TextWithImage*
  *
  */
 type TextWithImageSliceVariation =
   | TextWithImageSliceDefault
-  | TextWithImageSliceWithButton;
+  | TextWithImageSliceWithButton
+  | TextWithImageSliceWithTags;
 /**
  * TextWithImage Shared Slice
  *
@@ -900,6 +1043,7 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       PageDocument,
       ProjectDetailsDocumentData,
+      ProjectDetailsDocumentDataSlicesSlice,
       ProjectDetailsDocument,
       SettingsDocumentData,
       SettingsDocument,
@@ -940,6 +1084,8 @@ declare module "@prismicio/client" {
       TextWithImageSliceDefault,
       TextWithImageSliceWithButtonPrimary,
       TextWithImageSliceWithButton,
+      TextWithImageSliceWithTagsPrimary,
+      TextWithImageSliceWithTags,
       TextWithImageSliceVariation,
       TextWithImageSlice,
       ToolIconsSectionSliceDefaultPrimary,

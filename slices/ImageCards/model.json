@@ -65,7 +65,13 @@
           "config": {
             "label": "Platform",
             "placeholder": "",
-            "options": ["Web", "Android", "iOS ", "Mobile(Android/iOS)"],
+            "options": [
+              "Web",
+              "Android",
+              "iOS ",
+              "Mobile(Android/iOS)",
+              "Web & Mobile"
+            ],
             "default_value": "Web"
           }
         },
