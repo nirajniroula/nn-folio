@@ -240,11 +240,64 @@ export type SettingsDocument<Lang extends string = string> =
     "settings",
     Lang
   >;
+/** Content for Tools documents */
+interface ToolsDocumentData {
+  /**
+   * Title field in *Tools*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tools.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * About field in *Tools*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tools.about
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  about: prismic.RichTextField;
+  /**
+   * Slice Zone field in *Tools*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tools.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<ToolsDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Tools → Slice Zone*
+ *
+ */
+type ToolsDocumentDataSlicesSlice = TextSlice | ToolComponentSlice;
+/**
+ * Tools document from Prismic
+ *
+ * - **API ID**: `tools`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ToolsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ToolsDocumentData>, "tools", Lang>;
 export type AllDocumentTypes =
   | NavigationDocument
   | PageDocument
   | ProjectDetailsDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | ToolsDocument;
 /**
  * Primary content in Button → Primary
  *
@@ -966,6 +1019,72 @@ export type TextWithImageSlice = prismic.SharedSlice<
   TextWithImageSliceVariation
 >;
 /**
+ * Primary content in ToolComponent → Primary
+ *
+ */
+interface ToolComponentSliceDefaultPrimary {
+  /**
+   * Name field in *ToolComponent → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tool_component.primary.name
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  name: prismic.KeyTextField;
+  /**
+   * Title field in *ToolComponent → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tool_component.primary.title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * Description field in *ToolComponent → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tool_component.primary.description
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  description: prismic.RichTextField;
+}
+/**
+ * Default variation for ToolComponent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ToolComponentSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ToolComponentSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *ToolComponent*
+ *
+ */
+type ToolComponentSliceVariation = ToolComponentSliceDefault;
+/**
+ * ToolComponent Shared Slice
+ *
+ * - **API ID**: `tool_component`
+ * - **Description**: `ToolComponent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ToolComponentSlice = prismic.SharedSlice<
+  "tool_component",
+  ToolComponentSliceVariation
+>;
+/**
  * Primary content in ToolIconsSection → Primary
  *
  */
@@ -1047,6 +1166,9 @@ declare module "@prismicio/client" {
       ProjectDetailsDocument,
       SettingsDocumentData,
       SettingsDocument,
+      ToolsDocumentData,
+      ToolsDocumentDataSlicesSlice,
+      ToolsDocument,
       AllDocumentTypes,
       ButtonSliceDefaultPrimary,
       ButtonSliceDefault,
@@ -1088,6 +1210,10 @@ declare module "@prismicio/client" {
       TextWithImageSliceWithTags,
       TextWithImageSliceVariation,
       TextWithImageSlice,
+      ToolComponentSliceDefaultPrimary,
+      ToolComponentSliceDefault,
+      ToolComponentSliceVariation,
+      ToolComponentSlice,
       ToolIconsSectionSliceDefaultPrimary,
       ToolIconsSectionSliceDefaultItem,
       ToolIconsSectionSliceDefault,

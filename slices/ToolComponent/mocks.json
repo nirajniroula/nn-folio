@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "great",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "appearance",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Qui ullamco ex in eiusmod sint sint amet id aliqua quis eiusmod eu. In officia qui dolor in ex sunt sit commodo sit proident adipisicing sit. Sit Lorem proident proident magna elit ad excepteur veniam excepteur est ipsum ea reprehenderit."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

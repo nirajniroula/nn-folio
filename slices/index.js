@@ -11,5 +11,6 @@ export const components = {
   quote: dynamic(() => import("./Quote")),
   text: dynamic(() => import("./Text")),
   text_with_image: dynamic(() => import("./TextWithImage")),
+  tool_component: dynamic(() => import("./ToolComponent")),
   tool_icons_section: dynamic(() => import("./ToolIconsSection")),
 };
