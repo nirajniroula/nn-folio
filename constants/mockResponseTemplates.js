@@ -1,4 +1,4 @@
-// utils/mockResponseTemplates.js
+// constants/mockResponseTemplates.js
 const responseTemplates = {
   GET: {
     list: {

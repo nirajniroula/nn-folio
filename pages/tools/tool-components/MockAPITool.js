@@ -3,7 +3,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { useState } from "react";
 import { MdContentCopy } from "react-icons/md";
 import { SlEye, SlTrash } from "react-icons/sl";
-import { responseTemplates } from "../utils/mockResponseTemplates";
+import { responseTemplates } from "../../../constants/mockResponseTemplates";
 
 const MockAPITool = ({ title, description }) => {
   const [endpoint, setEndpoint] = useState("");

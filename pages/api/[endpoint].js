@@ -1,6 +1,7 @@
 // pages/api/[endpoint].js
 
-import { responseTemplates } from "../tools/utils/mockResponseTemplates";
+import responseTemplates from "../../constants/mockResponseTemplates";
+
 
 export default function handler(req, res) {
   const { endpoint, method, scenario } = req.query;
