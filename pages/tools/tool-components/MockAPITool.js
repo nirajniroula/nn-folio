@@ -175,10 +175,12 @@ const MockAPITool = ({ title, description }) => {
                 <h2 className="mb-4 text-xl font-bold">Response:</h2>
                 <button
                   onClick={() => {
-                    navigator.clipboard.writeText(
-                      JSON.stringify(response, null, 2)
-                    );
-                    showToast("Copied to clipboard.");
+                    if (response) {
+                      navigator.clipboard.writeText(
+                        JSON.stringify(response, null, 2)
+                      );
+                      showToast("Copied to clipboard.");
+                    }
                   }}
                   className="btn-sm btn-square btn"
                 >
@@ -198,10 +200,12 @@ const MockAPITool = ({ title, description }) => {
               </h2>
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText(
-                    JSON.stringify(response, null, 2)
-                  );
-                  showToast("Copied to clipboard.");
+                  if (response) {
+                    navigator.clipboard.writeText(
+                      JSON.stringify(generateRoute(), null, 2)
+                    );
+                    showToast("Copied to clipboard.");
+                  }
                 }}
                 className="btn-sm btn-square btn"
               >
