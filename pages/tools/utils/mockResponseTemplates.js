@@ -1,5 +1,5 @@
 // utils/mockResponseTemplates.js
-export const responseTemplates = {
+const responseTemplates = {
   GET: {
     list: {
       description: 'Fetch a list of items (e.g., products, users)',
@@ -88,3 +88,4 @@ export const responseTemplates = {
     },
   },
 };
+export default responseTemplates;
