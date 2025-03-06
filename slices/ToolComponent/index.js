@@ -6,7 +6,6 @@ import MockAPITool from "../../pages/tools/tool-components/MockAPITool";
  * @param {ToolComponentProps}
  */
 const ToolComponent = ({ slice }) => {
-  console.log(">>>>>", slice);
   switch (slice.primary.name) {
     case "mock-api":
       return (

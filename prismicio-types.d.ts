@@ -118,6 +118,30 @@ interface PageDocumentData {
    *
    */
   meta_description: prismic.RichTextField;
+  /**
+   * No Index field in *Page*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: page.no_index
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  no_index: prismic.BooleanField;
+  /**
+   * No Follow field in *Page*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: page.no_follow
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  no_follow: prismic.BooleanField;
 }
 /**
  * Slice for *Page → Slice Zone*
@@ -275,6 +299,52 @@ interface ToolsDocumentData {
    *
    */
   slices: prismic.SliceZone<ToolsDocumentDataSlicesSlice>;
+  /**
+   * Meta Title field in *Tools*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tools.meta_title
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_title: prismic.RichTextField;
+  /**
+   * Meta Description field in *Tools*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tools.meta_description
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
+  /**
+   * No Index field in *Tools*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: tools.no_index
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  no_index: prismic.BooleanField;
+  /**
+   * No Follow field in *Tools*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: tools.no_follow
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  no_follow: prismic.BooleanField;
 }
 /**
  * Slice for *Tools → Slice Zone*

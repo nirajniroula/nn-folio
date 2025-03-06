@@ -1,23 +1,36 @@
+import * as prismicH from "@prismicio/helpers";
 import { NextSeo } from "next-seo";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 import Footer from "./Layout/Footer";
 import DrawerMenu from "./Nav/DrawerMenu";
 import MenuButton from "./Nav/MenuButton";
 import NavDesktop from "./Nav/NavDesktop";
 import NavTitle from "./Nav/NavTitle";
-import * as prismicH from "@prismicio/helpers";
-import { useContext, useState } from "react";
-import { ThemeContext } from "../contexts/ThemeContext";
 
 export const Layout = ({ navigation, settings, page, children }) => {
   const { currentTheme, toggleTheme } = useContext(ThemeContext);
   const onToggleTheme = () => {
     toggleTheme();
   };
+  console.log(
+    "....",
+    page.data.meta_title,
+    page.data.no_index,
+    page.data.no_index
+  );
   return (
     <>
       <NextSeo
         title={prismicH.asText(page.data.meta_title)}
         description={prismicH.asText(page.data.meta_description)}
+        openGraph={{
+          title: prismicH.asText(page.data.meta_title),
+          description: prismicH.asText(page.data.meta_description),
+          site_name: prismicH.asText(page.data.meta_title),
+        }}
+        noindex={page.data.no_index || true}
+        nofollow={page.data.no_follow || true}
       />
       <div className="drawer drawer-end" data-theme={currentTheme}>
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
