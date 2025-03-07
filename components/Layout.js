@@ -13,12 +13,6 @@ export const Layout = ({ navigation, settings, page, children }) => {
   const onToggleTheme = () => {
     toggleTheme();
   };
-  console.log(
-    "....",
-    page.data.meta_title,
-    page.data.no_index,
-    page.data.no_index
-  );
   return (
     <>
       <NextSeo

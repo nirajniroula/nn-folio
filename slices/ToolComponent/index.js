@@ -1,4 +1,5 @@
 import MockAPITool from "../../pages/tools/tool-components/MockAPITool";
+import Timeline from "../../pages/tools/tool-components/Timeline";
 
 /**
  * @typedef {import("@prismicio/client").Content.ToolComponentSlice} ToolComponentSlice
@@ -14,7 +15,13 @@ const ToolComponent = ({ slice }) => {
           description={slice.primary.description}
         />
       );
-
+      case "timeline":
+        return (
+          <Timeline
+            title={slice.primary.title}
+            description={slice.primary.description}
+          />
+        );
     default:
       return <></>; // Handle unknown slice types
   }

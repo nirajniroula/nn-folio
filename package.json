@@ -22,11 +22,13 @@
     "@prismicio/slice-simulator-react": "^0.2.3",
     "clsx": "^1.2.1",
     "daisyui": "^2.51.6",
+    "gsap": "^3.12.7",
     "next": "^13.0.3",
     "next-seo": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "three": "^0.174.0"
   },
   "devDependencies": {
     "@prismicio/types": "^0.2.7",
