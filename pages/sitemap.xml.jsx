@@ -1,7 +1,7 @@
 import React from "react";
-import linkResolver from "../utils/linkResolver";
-import { createClient } from "../prismicio";
 import { renderToStaticMarkup } from "react-dom/server";
+import { createClient } from "../prismicio";
+import linkResolver from "../utils/linkResolver";
 
 const SitemapIndex = () => null;
 
@@ -29,7 +29,7 @@ const Sitemap = ({ pages }) => {
 
         if (
           (linkResolver(page) !== "/" || page.url) &&
-          !(page.data.seoIndex === false)
+          !(page.data.no_index === true)
         ) {
           const url = origin + (linkResolver(page) || page.url);
 
