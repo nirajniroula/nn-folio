@@ -1,11 +1,13 @@
 import gsap from "gsap"; // For smooth animations
 import { useEffect, useRef } from "react";
+import { SlArrowUp } from "react-icons/sl";
 import * as THREE from "three";
 import { presidentList } from "../../../constants/presidents";
 
+
 const Timeline = () => {
   const mountRef = useRef(null);
-
+  const scrollToPresidentRef = useRef();
   useEffect(() => {
     // Three.js scene setup
     const finalHeight = window.innerHeight - 100;
@@ -71,6 +73,74 @@ const Timeline = () => {
     // President Data
     const presidents = [...presidentList]; // Create a copy of the array
     presidents.reverse();
+
+    const scrollToPresident = (index) => {
+      if (index < 0 || index >= presidentMeshes.length) return; // Validate index
+
+      // Update currentIndex to the target president
+      currentIndex = index;
+
+      // Smoothly animate the camera to focus on the target president
+      gsap.to(camera.position, {
+        y: -currentIndex * 6, // Match the Y position of the target president
+        duration: 1.2, // Animation duration
+        ease: "power2.out", // Smooth easing function
+      });
+
+      // Update textures and effects for the target president
+      updateTextures(currentIndex, presidentMeshes, presidents);
+
+      // Update info overlay
+      const infoOverlay = document.getElementById("info-overlay");
+      const presidentName = document.getElementById("president-name");
+      const presidentTerm = document.getElementById("president-term");
+      if (infoOverlay && presidentName && presidentTerm) {
+        presidentName.textContent = presidents[currentIndex].name;
+        presidentTerm.textContent = `Term: ${presidents[currentIndex].term}`;
+
+        // Animate info overlay appearance
+        gsap.fromTo(
+          infoOverlay,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, delay: 0.3 }
+        );
+      }
+
+      // Scale up the focused president and blur others
+      presidentMeshes.forEach((mesh, i) => {
+        if (i === currentIndex) {
+          // Scale up focused president
+          gsap.to(mesh.scale, {
+            x: 2.5,
+            y: 2.1,
+            z: 2,
+            duration: 0.8,
+            delay: 0.5,
+          });
+
+          // Remove blur effect
+          mesh.material = new THREE.MeshBasicMaterial({
+            map: mesh.material.map,
+          });
+        } else {
+          // Scale down non-focused presidents
+          gsap.to(mesh.scale, {
+            x: 0.2,
+            y: 0.2,
+            z: 0.2,
+            duration: 0.5,
+          });
+
+          // Add blur effect
+          mesh.material = new THREE.MeshBasicMaterial({
+            map: mesh.material.map,
+            transparent: true,
+            opacity: 0.5,
+          });
+        }
+      });
+    };
+    scrollToPresidentRef.current = scrollToPresident;
 
     // Load Textures and Create Meshes
     const textureLoader = new THREE.TextureLoader();
@@ -235,7 +305,6 @@ const Timeline = () => {
             });
             mesh.material.needsUpdate = true;
           });
-
         } else {
           // Scale down non-focused presidents
           gsap.to(mesh.scale, {
@@ -312,6 +381,18 @@ const Timeline = () => {
         <h2 id="president-name"></h2>
         <p id="president-term"></p>
       </div>
+      <button
+        onClick={() => scrollToPresidentRef.current(0)}
+        className="btn-secondary btn-md btn-circle btn"
+        style={{
+          position: "fixed",
+          bottom: "80px",
+          right: "120px",
+          zIndex: 1000,
+        }}
+      >
+        <SlArrowUp className="h-4 w-4" />
+      </button>
     </div>
   );
 };
