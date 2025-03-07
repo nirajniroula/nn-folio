@@ -135,7 +135,7 @@ const Timeline = () => {
       presidentMeshes.push(mesh);
       // Set the first president as focused by default
       if (index === 0) {
-        mesh.scale.set(2.5, 2.5, 2.5); // Scale up the first president
+        mesh.scale.set(2.5, 2.1, 2); // Scale up the first president
       } else {
         mesh.scale.set(0.2, 0.2, 0.2); // Scale down non-focused presidents
         mesh.material = new THREE.MeshBasicMaterial({
@@ -219,8 +219,8 @@ const Timeline = () => {
           // Scale up focused president
           gsap.to(mesh.scale, {
             x: 2.5, // Increased scale for focused image
-            y: 2.5,
-            z: 2.5,
+            y: 2.1,
+            z: 2,
             duration: 0.8,
             delay: 0.5, // Slight delay for smooth scaling
           });
