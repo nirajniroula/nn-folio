@@ -83,7 +83,7 @@ const Timeline = () => {
       // Smoothly animate the camera to focus on the target president
       gsap.to(camera.position, {
         y: -currentIndex * 6, // Match the Y position of the target president
-        duration: 1.2, // Animation duration
+        duration: 1.5, // Animation duration
         ease: "power2.out", // Smooth easing function
       });
 
