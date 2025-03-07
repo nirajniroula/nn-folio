@@ -28,6 +28,10 @@ const routes = [
     path: "/project/:uid",
   },
   {
+    type: "tools",
+    path: "/tools/:uid",
+  },
+  {
     type: "settings",
     path: "/",
   },

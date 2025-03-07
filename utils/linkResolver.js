@@ -8,6 +8,9 @@ const linkResolver = (doc) => {
   if (doc.type === "page") {
     return `/${doc.uid}`;
   }
+  if (doc.type === "tools") {
+    return `/tools/${doc.uid}`;
+  }
 
   return "/";
 };
