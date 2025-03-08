@@ -399,7 +399,7 @@ const Timeline = () => {
       </div>
       <button
         onClick={() => scrollToPresidentRef.current(0)}
-        className="btn-secondary btn-md btn-circle btn"
+        className="btn-success btn-sm btn-circle btn"
         style={{
           position: "fixed",
           bottom: "80px",

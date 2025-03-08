@@ -1,3 +1,4 @@
+import FloatingInfoButton from "../../pages/tools/tool-components/FloatingInfoButton";
 import MockAPITool from "../../pages/tools/tool-components/MockAPITool";
 import Timeline from "../../pages/tools/tool-components/Timeline";
 
@@ -15,13 +16,19 @@ const ToolComponent = ({ slice }) => {
           description={slice.primary.description}
         />
       );
-      case "timeline":
-        return (
+    case "timeline":
+      return (
+        <>
           <Timeline
             title={slice.primary.title}
             description={slice.primary.description}
           />
-        );
+          <FloatingInfoButton
+            title={slice.primary.title}
+            description={slice.primary.description}
+          />
+        </>
+      );
     default:
       return <></>; // Handle unknown slice types
   }
