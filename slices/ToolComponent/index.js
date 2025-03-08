@@ -11,10 +11,16 @@ const ToolComponent = ({ slice }) => {
   switch (slice.primary.name) {
     case "mock-api":
       return (
-        <MockAPITool
-          title={slice.primary.title}
-          description={slice.primary.description}
-        />
+        <>
+          <MockAPITool
+            title={slice.primary.title}
+            description={slice.primary.description}
+          />
+          <FloatingInfoButton
+            title={slice.primary.title}
+            description={slice.primary.description}
+          />
+        </>
       );
     case "timeline":
       return (

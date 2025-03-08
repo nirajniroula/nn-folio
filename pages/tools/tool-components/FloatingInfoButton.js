@@ -10,11 +10,9 @@ const FloatingInfoButton = ({ title, description }) => {
           document.getElementById("info-popup").style.display = "block";
           document.getElementById("info-popup-overlay").style.display = "block";
         }}
-        className="btn-info btn-outline btn-sm btn-circle btn"
+        className="btn-info btn-ghost btn-sm btn-circle btn floating-button-left"
         style={{
           position: "fixed",
-          bottom: "80px",
-          left: "80px",
           zIndex: 1000,
         }}
       >
@@ -24,6 +22,7 @@ const FloatingInfoButton = ({ title, description }) => {
       {/* Info popup (server-rendered, hidden by default) */}
       <div
         id="info-popup"
+        className="info-popup"
         style={{
           display: "none", // Hidden by default
           position: "fixed",

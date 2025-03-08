@@ -13,3 +13,68 @@ body {
   background-color: #f9f9f9;
   color: #333;
 }
+
+.floating-button-right {
+  position: fixed;
+  bottom: 80px;
+  right: 80px;
+}
+
+/* For smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .floating-button-right {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* For medium screens (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .floating-button-right {
+    bottom: 40px;
+    right: 40px;
+  }
+}
+
+.floating-button-left {
+  position: fixed;
+  bottom: 60px;
+  left: 20px;
+}
+
+/* For smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .floating-button-left {
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+/* For medium screens (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .floating-button-left {
+    bottom: 60px;
+    left: 20px;
+  }
+}
+
+.info-popup {
+  min-width: 300px; /* Default width for desktop */
+  max-width: 90%; /* Ensure it doesn't overflow on smaller screens */
+}
+
+/* For smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .info-popup {
+    width: 90%; /* Take up most of the screen width */
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+}
+
+/* For medium screens (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .info-popup {
+    width: 70%; /* Slightly wider than mobile but not full desktop width */
+    padding: 20px;
+  }
+}
