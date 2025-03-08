@@ -12,6 +12,7 @@ const Timeline = ({title}) => {
     const finalHeight = window.innerHeight - 190;
     const finalWidth = window.innerWidth - 100;
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x2a303c); // White background
     const camera = new THREE.PerspectiveCamera(
       75,
       finalWidth / finalHeight,
@@ -28,7 +29,7 @@ const Timeline = ({title}) => {
 
     // Starfield Animation
     const createStarfield = () => {
-      const starCount = 3000; // Number of stars
+      const starCount = 1000; // Number of stars
       const stars = new Float32Array(starCount * 3); // Each star has x, y, z coordinates
 
       // Randomly position stars
@@ -378,6 +379,7 @@ const Timeline = ({title}) => {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor:'#2a303c'
       }}
     >
       <h1 className="m-4 text-2xl font-bold">{title}</h1>
