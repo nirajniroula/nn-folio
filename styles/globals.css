@@ -39,14 +39,14 @@ body {
 .floating-button-left {
   position: fixed;
   bottom: 60px;
-  left: 20px;
+  left: 12px;
 }
 
 /* For smaller screens (e.g., mobile devices) */
 @media (max-width: 768px) {
   .floating-button-left {
     bottom: 20px;
-    left: 20px;
+    left: 12px;
   }
 }
 
@@ -54,7 +54,7 @@ body {
 @media (min-width: 769px) and (max-width: 1024px) {
   .floating-button-left {
     bottom: 60px;
-    left: 20px;
+    left: 12px;
   }
 }
 

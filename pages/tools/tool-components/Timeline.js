@@ -4,12 +4,12 @@ import { SlArrowUp } from "react-icons/sl";
 import * as THREE from "three";
 import { presidentList } from "../../../constants/presidents";
 
-const Timeline = () => {
+const Timeline = ({title}) => {
   const mountRef = useRef(null);
   const scrollToPresidentRef = useRef();
   useEffect(() => {
     // Three.js scene setup
-    const finalHeight = window.innerHeight - 100;
+    const finalHeight = window.innerHeight - 190;
     const finalWidth = window.innerWidth - 100;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -374,17 +374,20 @@ const Timeline = () => {
     <div
       style={{
         display: "flex",
+        flexDirection:'column',
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
       }}
     >
+      <h1 className="m-4 text-2xl font-bold">{title}</h1>
+
       <div ref={mountRef} />
       <div
         id="info-overlay"
         style={{
           position: "absolute",
-          top: "120px",
+          top: "160px",
           left: "27px",
           color: "white",
           opacity: 0, // Initially hidden
@@ -399,11 +402,9 @@ const Timeline = () => {
       </div>
       <button
         onClick={() => scrollToPresidentRef.current(0)}
-        className="btn-success btn-sm btn-circle btn floating-button-right"
+        className="floating-button-right btn-success btn-sm btn-circle btn"
         style={{
           position: "fixed",
-          // bottom: "80px",
-          // right: "80px",
           zIndex: 1000,
         }}
       >

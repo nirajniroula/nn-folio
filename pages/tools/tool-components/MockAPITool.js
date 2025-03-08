@@ -1,5 +1,4 @@
 // pages/index.js
-import { PrismicRichText } from "@prismicio/react";
 import { useState } from "react";
 import { MdContentCopy } from "react-icons/md";
 import { SlEye, SlTrash } from "react-icons/sl";
@@ -93,7 +92,6 @@ const MockAPITool = ({ title, description }) => {
     <div className="flex flex-1 flex-col p-6">
       {/* Main Content */}
       <h1 className="mb-4 text-2xl font-bold">{title}</h1>
-      <PrismicRichText field={description} />
 
       {/* Three-Column Layout */}
       <div className="mt-6 grid grid-cols-1 items-start gap-6 md:grid-cols-5">
