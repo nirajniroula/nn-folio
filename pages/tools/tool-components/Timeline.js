@@ -366,7 +366,7 @@ const Timeline = () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
-      mountRef.current.removeChild(renderer.domElement);
+      mountRef?.current?.removeChild(renderer.domElement);
     };
   }, []);
 
