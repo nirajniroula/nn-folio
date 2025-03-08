@@ -4,7 +4,6 @@ import { SlArrowUp } from "react-icons/sl";
 import * as THREE from "three";
 import { presidentList } from "../../../constants/presidents";
 
-
 const Timeline = () => {
   const mountRef = useRef(null);
   const scrollToPresidentRef = useRef();
@@ -329,14 +328,29 @@ const Timeline = () => {
       });
     };
 
-    // Throttle scroll events
-    const throttleScroll = (event) => {
-      if (!isScrolling) {
-        onScroll(event);
-      }
+    // Handle wheel events (for desktop)
+    const handleWheel = (event) => {
+      if (isScrolling) return;
+      const delta = Math.sign(event.deltaY) * 0.5;
+      onScroll({ deltaY: delta });
     };
 
-    window.addEventListener("wheel", throttleScroll);
+    // Handle touch events (for mobile)
+    let touchStartY = 0;
+    const handleTouchStart = (event) => {
+      touchStartY = event.touches[0].clientY;
+    };
+
+    const handleTouchMove = (event) => {
+      if (isScrolling) return;
+      const touchEndY = event.touches[0].clientY;
+      const delta = touchStartY - touchEndY;
+      onScroll({ deltaY: delta * 0.1 });
+    };
+    // Add event listeners
+    window.addEventListener("wheel", handleWheel);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
 
     // Render Loop
     const animate = () => {
@@ -349,7 +363,9 @@ const Timeline = () => {
 
     // Cleanup
     return () => {
-      window.removeEventListener("wheel", throttleScroll);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
       mountRef.current.removeChild(renderer.domElement);
     };
   }, []);
@@ -387,7 +403,7 @@ const Timeline = () => {
         style={{
           position: "fixed",
           bottom: "80px",
-          right: "120px",
+          right: "80px",
           zIndex: 1000,
         }}
       >
