@@ -5,6 +5,7 @@ import responseTemplates from "../../constants/mockResponseTemplates";
 
 export default function handler(req, res) {
   const { endpoint, method, scenario } = req.query;
+  console.log(">>>>>>", method, scenario, req);
   const template = responseTemplates[method]?.[scenario];
   
   // Build response

@@ -63,9 +63,7 @@ const MockAPITool = ({ title, description }) => {
       const baseUrl = "https://www.nirajniroula.com.np/api"; // Replace with your actual base URL
       let route = `${baseUrl}/${endpoint}`;
 
-      if (method === "GET") {
-        route += `?scenario=${scenario}`;
-      }
+      route += `?method=${method}&scenario=${scenario}`;
 
       return route;
     } else {
@@ -202,8 +200,8 @@ const MockAPITool = ({ title, description }) => {
                 onClick={() => {
                   if (response) {
                     navigator.clipboard.writeText(
-                      JSON.stringify(generateRoute(), null, 2)
-                    );
+                      JSON.stringify(generateRoute()).slice(1, -1)
+                  );
                     showToast("Copied to clipboard.");
                   }
                 }}
