@@ -203,6 +203,52 @@ interface ProjectDetailsDocumentData {
    *
    */
   slices: prismic.SliceZone<ProjectDetailsDocumentDataSlicesSlice>;
+  /**
+   * Meta Title field in *Project Details*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_details.meta_title
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_title: prismic.RichTextField;
+  /**
+   * Meta Description field in *Project Details*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_details.meta_description
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
+  /**
+   * No Index field in *Project Details*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project_details.no_index
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  no_index: prismic.BooleanField;
+  /**
+   * No Follow field in *Project Details*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project_details.no_follow
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  no_follow: prismic.BooleanField;
 }
 /**
  * Slice for *Project Details → Slice Zone*

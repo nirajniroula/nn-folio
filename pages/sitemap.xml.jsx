@@ -48,7 +48,6 @@ const Sitemap = ({ pages }) => {
 export const getServerSideProps = async ({ res }) => {
   const client = createClient();
   const pages = await client.dangerouslyGetAll();
-console.log(".......", pages);
   res.setHeader("Content-Type", "text/xml");
   res.write(renderToStaticMarkup(<Sitemap pages={pages} />));
   res.end();

@@ -11,6 +11,9 @@ const linkResolver = (doc) => {
   if (doc.type === "tools") {
     return `/tools/${doc.uid}`;
   }
+  if (doc.type === "project_details") {
+    return `/project/${doc.uid}`;
+  }
 
   return "/";
 };
