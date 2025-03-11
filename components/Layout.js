@@ -13,6 +13,7 @@ export const Layout = ({ navigation, settings, page, children }) => {
   const onToggleTheme = () => {
     toggleTheme();
   };
+  console.log("page", page.data.no_index);
   return (
     <>
       <NextSeo
@@ -23,8 +24,8 @@ export const Layout = ({ navigation, settings, page, children }) => {
           description: prismicH.asText(page.data.meta_description),
           site_name: prismicH.asText(page.data.meta_title),
         }}
-        noindex={page.data.no_index || true}
-        nofollow={page.data.no_follow || true}
+        noindex={page?.data?.no_index}
+        nofollow={page?.data?.no_follow}
       />
       <div className="drawer drawer-end" data-theme={currentTheme}>
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
