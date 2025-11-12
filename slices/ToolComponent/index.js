@@ -1,6 +1,7 @@
 import FloatingInfoButton from "../../pages/tools/tool-components/FloatingInfoButton";
 import MockAPITool from "../../pages/tools/tool-components/MockAPITool";
 import Timeline from "../../pages/tools/tool-components/Timeline";
+import NepalKingsTimeline from "../../pages/tools/tool-components/NepalKingsTimeline";
 
 /**
  * @typedef {import("@prismicio/client").Content.ToolComponentSlice} ToolComponentSlice
@@ -26,6 +27,19 @@ const ToolComponent = ({ slice }) => {
       return (
         <>
           <Timeline
+            title={slice.primary.title}
+            description={slice.primary.description}
+          />
+          <FloatingInfoButton
+            title={slice.primary.title}
+            description={slice.primary.description}
+          />
+        </>
+      );
+       case "nepal-kings-timeline":
+      return (
+        <>
+          <NepalKingsTimeline
             title={slice.primary.title}
             description={slice.primary.description}
           />

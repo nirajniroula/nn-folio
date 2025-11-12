@@ -447,7 +447,7 @@ export const presidentList = [
     birthYear: 1946,
     deathYear: null,
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/TrumpPortrait.jpg/371px-TrumpPortrait.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/2/2e/Donald_Trump_%2814235998650%29_%28cropped%29.jpg",
   },
   {
     id: 46,
@@ -467,6 +467,6 @@ export const presidentList = [
     birthYear: 1946,
     deathYear: null,
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/TrumpPortrait.jpg/463px-TrumpPortrait.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/2/2e/Donald_Trump_%2814235998650%29_%28cropped%29.jpg",
   },
 ];
