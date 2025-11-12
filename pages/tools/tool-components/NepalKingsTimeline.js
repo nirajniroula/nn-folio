@@ -272,7 +272,7 @@ const NepalKingsTimeline = ({ title }) => {
       if (infoOverlay && presidentName && presidentTerm) {
         // Update content
         presidentName.textContent = presidents[currentIndex].name;
-        presidentTerm.textContent = `Term: ${presidents[currentIndex].term}`;
+        presidentTerm.textContent = `अवधि: ${presidents[currentIndex].term}`;
 
         // Animate info overlay appearance
         gsap.fromTo(
